@@ -1,0 +1,128 @@
+{% extends "base.html" %} {% block title%}Home{% endblock %}
+{% block content %}
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<div class = "main" style="background-color:#E6FFE6;;">
+    <br><br><br>
+    <div class ="text-6xl my-4">A Plagiarism Detection Tool</div> 
+    <ul class="list-group list-group-flush" id="files">
+        {% for file in user.files %}
+        <li class="list-group-item">{{ files.data }}</li>
+        {% endfor %}
+    </ul>
+
+    <div class="row">
+        <div class="column" align="center">
+            <img src="https://static.grammarly.com/assets/files/7c826e77d9a2866520c4e196e32c7407/catch_plagiarism.svg" width="50%">
+        </div>
+    
+        <div class="column" >
+            <b><i><font color ="#660066"><p class = "text-2xl px-1 py-3 w-1/3 ">The best Plagiarism detection tool in the market</p></font></i></b>
+            <font color ="red" ><p class = "text-x px-0 py-3 w-1/3 ">How to check plagiarism &#63; </p></font>
+            
+            <h1>&#10004; &nbsp;&nbsp;   Click on upload file button </h1>
+            <h1>&#10004; &nbsp;&nbsp;   Upload your document (.txt or .pdf) </h1>
+            <h1>&#10004; &nbsp;&nbsp;   Click on check plagiarism </h1>
+            <h1>&#10004; &nbsp;&nbsp;   Get the results </h1>
+            
+        </div>
+        
+    </div><br>
+    <!--
+    <div class="flex justify-center">
+        <div class = "box py-10" >
+                <textarea
+                class="
+                    rounded-lg
+                    w-96
+                    h-56
+                    px-3
+                    py-5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                "
+                id="exampleFormControlTextarea1"
+                rows="3"
+                placeholder="Enter text or upload file to check for plagiarism :"
+                ></textarea>
+        </div>
+        </div>
+-->
+        <div class="flex space-x-2 justify-center">
+            <form action = "/upload" method  = "post" enctype="multipart/form-data">
+                <input type="file" name="file" value="user-file" class="file-upload-field inline-block px-6 py-2.5 bg-purple-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" >
+                <input type="submit" name="upload" value="Check Plagiarism" class="inline-block px-6 py-2.5 bg-purple-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+            </form>
+            </div><br><br><br><hr><br>
+            <div align = "center">
+                <p class = "text-2xl px-1 py-3 w-1/3 " align = "center">Want to check a piece of text? Click <u><b><a href="/converter">here</a></b></u> to get a file document for your text</p>
+            </div>
+           
+            <div class = "text-xl px-5 py-3 my-4" style="color:red;"  align = "center"  >{{msg}}</div>
+            
+            
+        </div>
+  
+
+        
+
+</div>
+<br><br>
+<section class="text-gray-600 body-font" style="background-color:white">
+    
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-20">
+        <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">A product of Trust</h2>
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Why people choose PlagCheck?</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Trust is the most important tool for a client to totally believe in the service they use. We at PlagCheck ensure customer's data safety and provide perfect reports to their plagarism checks!</p>
+        </div>
+        <div class="flex flex-wrap">
+        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+            <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Fast and Accurate</h2>
+            <p class="leading-relaxed text-base mb-4">Our Plagiarism checker scans your text online over billions of webpages & document</p>
+        </div>
+        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+            <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">100% Safe and secure</h2>
+            <p class="leading-relaxed text-base mb-4">We do not save your data. All files and documentschecked with our free plagiarism checker are 100% safe and secure. The reports are deleted instantly.</p>
+        </div>
+        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+            <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Easy to understand</h2>
+            <p class="leading-relaxed text-base mb-4">We designed this plagiarism checker in such a way that users can easily understand results of checked content. You will see results of the text in real time.</p>
+        </div>
+        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+            <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Free Checks</h2>
+            <p class="leading-relaxed text-base mb-4">With all the security, customer service and development costs a reliable plagiarism checker is going to be free.</p>
+        </div>
+        </div>
+        <br><br><br>
+        <div class="rate" align="center">
+            <p align="center"><bold><textsize="2px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please rate your experience  </textsize></bold></p>
+            <input type="radio" id="star5" name="rate" value="5" />
+            <label for="star5" title="text">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4" />
+            <label for="star4" title="text">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3" />
+            <label for="star3" title="text">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label for="star2" title="text">2 stars</label>
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label for="star1" title="text">1 star</label>
+      
+        </div>
+        
+    </div>
+    </section>
+
+
+{% endblock %}
+

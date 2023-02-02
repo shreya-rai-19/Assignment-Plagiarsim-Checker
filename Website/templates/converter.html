@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title> SAVE THE TEXT TO A FILE</title>
+
+</head>
+<style>
+  * {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+background: linear-gradient(to bottom, #993366 0%, #9966ff 100%);
+  /background-color: #e882e8;/
+  font-family: "Kanit", Verdana, Arial, sans-serif;
+}
+
+#container {
+  width: 430px;
+  padding: 40px 20px;
+  background: white;
+}
+
+h2 {
+  color: #660066;
+  font-size: 30px;
+  width: 100%;
+  margin-top: -15px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#text {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  color: #021652;
+  border: 2px solid #660066;
+  border-radius: 2px;
+  resize: none;
+  margin-bottom: 35px;
+  height: 200px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+#filename {
+  width: calc(100% - 200px);
+  border: 2px solid #660066;
+  border-radius: 2px;
+  background-color: transparent;
+  color: #052a53;
+  padding: 0 10px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+#download {
+  background-color: #660066;
+  color: #fff;
+  font-size: 20px;
+  height: 50px;
+  border: none;
+  border-radius: 2px;
+  width: 174px;
+  cursor: pointer;
+}
+</style>
+<body>
+	<div id="container">
+		<h2><center>Save your text to a file</center></h2>
+	
+
+	<textarea placeholder="Type your text here..." id="text"></textarea>
+
+	<input id="filename" placeholder="Specify a filename..." />
+
+	<button id="download">Download file</button>
+	</div>
+
+<script type="text/javascript">
+
+	function downloadFile(filename, content) {
+  // It works on all HTML5 Ready browsers as it uses the download attribute of the <a> element:
+  const element = document.createElement('a');
+
+  //A blob is a data type that can store binary data
+  // "type" is a MIME type
+  // It can have a different value, based on a file you want to save
+  const blob = new Blob([content], { type: 'plain/text' });
+
+  //createObjectURL() static method creates a DOMString containing a URL representing the object given in the parameter.
+  const fileUrl = URL.createObjectURL(blob);
+
+  //setAttribute() Sets the value of an attribute on the specified element.
+  element.setAttribute('href', fileUrl); //file location
+  element.setAttribute('download', filename); // file name
+  element.style.display = 'none';
+
+  //use appendChild() method to move an element from one element to another
+  document.body.appendChild(element);
+  element.click();
+
+  //The removeChild() method of the Node interface removes a child node from the DOM and returns the removed node
+  document.body.removeChild(element);
+};
+
+window.onload = () => {
+  document.getElementById('download').
+  addEventListener('click', e => {
+
+    //The value of the file name input box
+    const filename = document.getElementById('filename').value;
+
+    //The value of what has been input in the textarea
+    const content = document.getElementById('text').value;
+
+    // The && (logical AND) operator indicates whether both operands are true. If both operands have nonzero values, the result has the value 1 . Otherwise, the result has the value 0.
+
+    if (filename && content) {
+      downloadFile(filename, content);
+    }
+  });
+};
+</script>
+</body>
+</html>
